@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Products - Gokul's Electronics Shop{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+
+<!-- Search Form -->
+<form method="get" action="" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search for products..." class="form-control">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-3">
+        <div class="card mb-4">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% else %}
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="No image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">${{ product.price }}</p>
+                <a href="{{ product.get_absolute_url }}" class="btn btn-sm btn-outline-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No products found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} - Gokul's Electronics Shop{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+        {% else %}
+        <img src="https://via.placeholder.com/300" class="img-fluid" alt="No image">
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <h3>${{ product.price }}</h3>
+        <!-- Add to Cart Form -->
+        <form method="post" action="{% url 'cart:cart_add' product.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Add to Cart</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
