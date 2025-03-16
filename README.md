@@ -70,3 +70,9 @@ EComm/
     └── templates/
         └── cart/
             └── detail.html
+
+# Contributing
+Contributions are welcome! Please open an issue or submit a pull request if you have improvements or bug fixes. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project is licensed under the MIT License.
